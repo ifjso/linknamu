@@ -10,15 +10,13 @@ export default async function HomePage() {
   const clickCounts = await getClickCounts();
 
   return (
-    <main className="flex flex-1 items-start justify-center px-4 py-8 sm:py-16">
-      {/* 와이어프레임의 모바일 프레임: 상단 프로필, 하단 링크 카드 세로 배치 */}
-      <div className="flex w-full max-w-sm flex-col items-center rounded-[2rem] border border-zinc-200 bg-white px-6 pb-14 pt-14 shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-        <ProfileHeader profile={profile} />
+    <main className="mx-auto flex w-full max-w-md flex-1 flex-col items-center px-5 py-10 md:max-w-2xl md:justify-center md:px-10 md:py-20">
+      {/* 모바일·데스크톱 모두 프로필 위, 링크 아래 세로 배치 (데스크톱은 폭만 넓게, 화면 정중앙) */}
+      <ProfileHeader profile={profile} />
 
-        <section className="mt-12 w-full" aria-label="링크 목록">
-          <LinkList links={links} clickCounts={clickCounts} />
-        </section>
-      </div>
+      <section className="mt-10 w-full" aria-label="링크 목록">
+        <LinkList links={links} clickCounts={clickCounts} />
+      </section>
     </main>
   );
 }

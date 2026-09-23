@@ -8,7 +8,7 @@ interface LinkListProps {
 
 export default function LinkList({ links, clickCounts }: LinkListProps) {
   return (
-    <ul className="flex flex-col gap-3">
+    <ul className="grid grid-cols-1 gap-3 md:gap-4">
       {links.map((link) => (
         <li key={link.id}>
           <LinkCard link={link} clickCount={clickCounts[link.id]} />

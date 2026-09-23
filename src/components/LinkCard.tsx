@@ -21,7 +21,7 @@ export default function LinkCard({ link, clickCount }: LinkCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
-      className="relative block rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.99] dark:border-zinc-700 dark:bg-zinc-900"
+      className="relative block h-full rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.99] dark:border-zinc-700 dark:bg-zinc-900"
     >
       <p className="truncate font-semibold">{link.title}</p>
       {link.description && (
