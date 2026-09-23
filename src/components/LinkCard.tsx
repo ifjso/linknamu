@@ -24,9 +24,10 @@ export default function LinkCard({ link, clickCount }: LinkCardProps) {
       target={isWebLink ? "_blank" : undefined}
       rel={isWebLink ? "noopener noreferrer" : undefined}
       onClick={handleClick}
-      className="relative block h-full rounded-2xl border border-zinc-200 bg-white px-5 py-4 text-center shadow-sm transition hover:-translate-y-0.5 hover:shadow-md active:scale-[0.99] dark:border-zinc-700 dark:bg-zinc-900"
+      // 글래스모피즘 카드. 호버는 살짝 밝아지고 1px 떠오르는 정도로만.
+      className="relative block h-full rounded-[1.375rem] border border-white/70 bg-white/45 px-14 py-[1.35rem] text-center shadow-[0_10px_30px_-18px_rgba(150,80,40,0.45)] backdrop-blur-xl transition duration-300 ease-out hover:-translate-y-px hover:bg-white/60 hover:shadow-[0_14px_34px_-18px_rgba(150,80,40,0.5)] active:translate-y-0 active:scale-[0.995] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e3a07c] dark:border-white/10 dark:bg-white/[0.06] dark:shadow-[0_10px_30px_-18px_rgba(0,0,0,0.8)] dark:hover:bg-white/10"
     >
-      <p className="truncate font-semibold">
+      <p className="truncate text-[1.17rem] font-semibold">
         {link.emoji && (
           <span className="mr-1.5" aria-hidden="true">
             {link.emoji}
@@ -35,12 +36,12 @@ export default function LinkCard({ link, clickCount }: LinkCardProps) {
         {link.title}
       </p>
       {link.description && (
-        <p className="mt-0.5 truncate text-sm text-zinc-500 dark:text-zinc-400">
+        <p className="mt-0.5 truncate text-[1.05rem] text-muted">
           {link.description}
         </p>
       )}
       {typeof clickCount === "number" && (
-        <span className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-zinc-100 px-2.5 py-1 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+        <span className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/60 px-2.5 py-1 text-[0.825rem] font-medium text-muted tabular-nums dark:bg-white/10">
           클릭 {clickCount.toLocaleString("ko-KR")}
         </span>
       )}

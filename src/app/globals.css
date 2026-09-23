@@ -1,25 +1,56 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f5f4;
-  --foreground: #171717;
+  /* 크림 → 연한 살구색 그라데이션 */
+  --bg-from: #fffaf2;
+  --bg-via: #ffefe2;
+  --bg-to: #ffdcc8;
+  --glow-a: rgba(255, 196, 150, 0.45);
+  --glow-b: rgba(255, 236, 200, 0.7);
+  --foreground: #2b221e;
+  --muted: #8a766b;
 }
 
 @theme inline {
-  --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-noto-sans-kr), system-ui, sans-serif;
+  --color-muted: var(--muted);
+  --font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", system-ui, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* 다크 모드도 같은 따뜻한 톤을 유지 */
+    --bg-from: #1a1411;
+    --bg-via: #231914;
+    --bg-to: #2e1f17;
+    --glow-a: rgba(255, 150, 90, 0.12);
+    --glow-b: rgba(255, 210, 160, 0.06);
+    --foreground: #f6ece5;
+    --muted: #b3a095;
   }
 }
 
+/* body 에 배경을 주면 아래 ::before 레이어를 덮으므로 캔버스(html)에만 기본색을 둔다 */
+html {
+  background: var(--bg-from);
+}
+
 body {
-  background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  letter-spacing: -0.01em;
+}
+
+/* 스크롤과 무관하게 화면에 고정되는 배경 (iOS 에서 background-attachment: fixed 미지원 대응) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60% 45% at 15% 10%, var(--glow-b), transparent 70%),
+    radial-gradient(55% 40% at 90% 85%, var(--glow-a), transparent 70%),
+    linear-gradient(165deg, var(--bg-from) 0%, var(--bg-via) 55%, var(--bg-to) 100%);
 }
