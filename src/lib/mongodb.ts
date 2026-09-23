@@ -1,7 +1,6 @@
 import { Db, MongoClient } from "mongodb";
 
 const uri = process.env.MONGODB_URI;
-const dbName = process.env.MONGODB_DB ?? "linknamu";
 
 declare global {
   // 개발 모드 HMR 시 커넥션이 중복 생성되지 않도록 전역에 캐시한다.
@@ -30,5 +29,6 @@ export async function getDb(): Promise<Db | null> {
     clientPromise = createClientPromise(uri);
   }
   const client = await clientPromise;
-  return client.db(dbName);
+  // DB 이름은 MONGODB_URI 경로(/linknamu)에서 결정된다.
+  return client.db();
 }
